@@ -1,0 +1,9 @@
+.body {
+    background: rgb(16, 55, 131);
+    background: linear-gradient(180deg, rgba(16, 55, 131, 1) 20%, rgba(155, 175, 217, 1) 70%);
+}
+
+.h-screen {
+    inset: 0;
+    opacity: 0.5;
+}

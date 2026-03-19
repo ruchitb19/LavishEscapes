@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LavishEscapes | Luxury Travel Experiences</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luxury-gold': '#d4af37',
+                        'luxury-navy': '#162447',
+                        'luxury-cream': '#f8f5e6',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'Georgia', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif']
+                    }
+                },
+            },
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="font-sans text-gray-800">
+
+    <!-- Hero Wrapper -->
+    <div id="HOME"
+        class="relative h-screen bg-[url('assets/images/travel-bg.jpg')] bg-cover bg-center bg-no-repeat">
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/60"></div>
+
+        <!-- Content Wrapper -->
+        <div class="relative z-10 flex flex-col h-full">
+
+            <!-- Navigation -->
+            <nav class="flex justify-between items-center px-8 py-6 text-white">
+                <h1 class="text-3xl font-serif font-bold tracking-wide">
+                    <a href="#HOME" class="relative group hover:text-luxury-gold transition-colors duration-300">
+                        LavishEscapes
+                        <span
+                            class="absolute left-0 -bottom-1 w-0 h-[2px] bg-luxury-gold transition-all duration-300 group-hover:w-full">
+                        </span>
+                    </a>
+                </h1>
+
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex gap-10 text-sm font-medium tracking-wide">
+                    <li><a href="#HOME" class="hover:text-luxury-gold transition">HOME</a></li>
+                    <li><a href="#ABOUT" class="hover:text-luxury-gold transition">ABOUT</a></li>
+                    <li><a href="#GUIDES" class="hover:text-luxury-gold transition">GUIDES</a></li>
+                    <li><a href="#PACKAGES" class="hover:text-luxury-gold transition">PACKAGES</a></li>
+                    <li><a href="#CONTACT" class="hover:text-luxury-gold transition">CONTACT</a></li>
+                </ul>
+
+                <!-- Mobile Toggle -->
+                <div class="md:hidden relative">
+                    <input type="checkbox" id="menu-toggle" class="hidden peer">
+                    <label for="menu-toggle" class="flex flex-col gap-1 cursor-pointer">
+                        <span class="w-6 h-[2px] bg-white"></span>
+                        <span class="w-6 h-[2px] bg-white"></span>
+                        <span class="w-6 h-[2px] bg-white"></span>
+                    </label>
+
+                    <ul
+                        class="hidden peer-checked:flex flex-col absolute top-12 right-0 w-48 bg-black/90 rounded-lg p-6 gap-4 text-center text-sm">
+                        <li><a href="#HOME" class="hover:text-luxury-gold">HOME</a></li>
+                        <li><a href="#ABOUT" class="hover:text-luxury-gold">ABOUT</a></li>
+                        <li><a href="#GUIDES" class="hover:text-luxury-gold">GUIDES</a></li>
+                        <li><a href="#PACKAGES" class="hover:text-luxury-gold">PACKAGES</a></li>
+                        <li><a href="#CONTACT" class="hover:text-luxury-gold">CONTACT</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Hero Content -->
+            <main class="flex flex-col items-center justify-center flex-grow text-center px-6 text-white">
+                <h2 class="text-5xl md:text-6xl font-serif font-bold mb-6">
+                    LavishEscapes
+                </h2>
+
+                <p class="text-lg md:text-xl font-light tracking-wide max-w-xl">
+                    Indulge in Unforgettable Luxury Getaways
+                </p>
+
+                <button class="mt-10 px-10 py-3 rounded-full bg-luxury-gold text-luxury-navy font-semibold tracking-wide 
+                 hover:bg-transparent hover:text-white border border-luxury-gold 
+                 transition-all duration-300">
+                    Discover Our Exclusive Journeys
+                </button>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Tour Search Section -->
+    <section id="tourSearch" class="bg-luxury-navy py-20">
+        <div class="max-w-6xl mx-auto px-6 text-center text-white">
+            <h2 class="text-4xl font-serif font-bold mb-3">Create Your Perfect Escape</h2>
+            <div class="w-24 h-1 bg-luxury-gold mx-auto mb-8"></div>
+            <p class="mb-12 text-lg">Find your next extraordinary journey tailored to your preferences.</p>
+
+            <form class="tour-search-form flex flex-col lg:flex-row gap-6 justify-center items-end flex-wrap">
+                <input type="text" placeholder="Destination" id="tourDestination"
+                    class="px-6 py-3 rounded-full text-black w-64 shadow-md">
+
+                <input type="number" placeholder="Guests" id="people"
+                    class="px-6 py-3 rounded-full text-black w-40 shadow-md">
+
+                <input type="date" id="tourCheckin" class="px-6 py-3 rounded-full text-black w-48 shadow-md">
+
+                <input type="date" id="tourCheckout" class="px-6 py-3 rounded-full text-black w-48 shadow-md">
+
+                <button
+                    class="px-8 py-3 rounded-full bg-luxury-gold text-luxury-navy font-semibold hover:bg-white transition">
+                    INQUIRE NOW
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="ABOUT" class="py-24 bg-luxury-cream">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-serif font-bold text-luxury-navy mb-4">About Us</h2>
+            <div class="w-24 h-1 bg-luxury-gold mx-auto mb-10"></div>
+
+            <p class="text-lg leading-relaxed mb-6">
+                At <span class="font-semibold">LavishEscapes</span>, we connect you with passionate local guides
+                who bring hidden gems and authentic experiences to life.
+            </p>
+
+            <p class="text-lg leading-relaxed">
+                Every journey is crafted to balance luxury and authenticity — beyond tourist traps,
+                into unforgettable experiences.
+            </p>
+        </div>
+    </section>
+
+    <!-- Guides Section -->
+    <section id="GUIDES" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-serif font-bold text-luxury-navy mb-4">Our Expert Guides</h2>
+            <div class="w-24 h-1 bg-luxury-gold mx-auto mb-12"></div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Card -->
+                <div class="rounded-lg shadow-lg hover:-translate-y-2 transition duration-300">
+                    <img src="assets/images/Isabella-Martinez.jpg"
+                        class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Isabella Martinez</h3>
+                        <p class="text-gray-500 mb-3">Barcelona, Spain</p>
+                        <p class="text-sm">Art historian who knows every hidden tapas bar and architectural gem.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rounded-lg shadow-lg hover:-translate-y-2 transition duration-300">
+                    <img src="assets/images/Akio-Tanaka.jpeg" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Akio Tanaka</h3>
+                        <p class="text-gray-500 mb-3">Kyoto, Japan</p>
+                        <p class="text-sm">Tea master providing exclusive cultural experiences.</p>
+                    </div>
+                </div>
+
+                <div class="rounded-lg shadow-lg hover:-translate-y-2 transition duration-300">
+                    <img src="assets/images/Sophia-Laurent.jpeg" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Sophia Laurent</h3>
+                        <p class="text-gray-500 mb-3">Paris, France</p>
+                        <p class="text-sm">Fashion expert offering true Parisian lifestyle immersion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="PACKAGES" class="py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-serif font-bold text-luxury-navy mb-4">Luxury Packages</h2>
+            <div class="w-24 h-1 bg-luxury-gold mx-auto mb-12"></div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Mediterranean Splendor</h3>
+                    <p class="text-gray-500 mb-4">Greece & Italy</p>
+                    <p class="text-sm mb-4">Private yacht tours and vineyard visits.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-luxury-navy">₹ 5,800</span>
+                        <button
+                            class="px-4 py-2 bg-luxury-navy text-white rounded-full hover:bg-luxury-gold transition">
+                            View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Safari & Serenity</h3>
+                    <p class="text-gray-500 mb-4">Kenya & Zanzibar</p>
+                    <p class="text-sm mb-4">Private reserves and beachfront villas.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-luxury-navy">₹ 8,950</span>
+                        <button
+                            class="px-4 py-2 bg-luxury-navy text-white rounded-full hover:bg-luxury-gold transition">
+                            View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Asian Elegance</h3>
+                    <p class="text-gray-500 mb-4">Japan & Thailand</p>
+                    <p class="text-sm mb-4">Tea ceremonies and luxury island stays.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-luxury-navy">₹ 10,200</span>
+                        <button
+                            class="px-4 py-2 bg-luxury-navy text-white rounded-full hover:bg-luxury-gold transition">
+                            View
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="CONTACT" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-serif font-bold text-luxury-navy mb-4">Contact Us</h2>
+            <div class="w-24 h-1 bg-luxury-gold mx-auto mb-12"></div>
+
+            <form id="contactForm" class="space-y-6 max-w-2xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" id="contactName" placeholder="Full Name" class="border rounded-md px-4 py-2" required>
+                    <input type="email" id="contactEmail" placeholder="Email" class="border rounded-md px-4 py-2" required>
+                </div>
+
+                <textarea id="contactMessage" rows="4" placeholder="Your Travel Dreams"
+                    class="w-full border rounded-md px-4 py-2" required></textarea>
+
+                <button type="submit"
+                    class="px-8 py-3 bg-luxury-navy text-white rounded-full hover:bg-luxury-gold transition">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-navy text-gray-300 py-16">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+
+            <div>
+                <h3 class="text-2xl font-serif text-white mb-4">LavishEscapes</h3>
+                <p>Curating extraordinary travel experiences since 2020.</p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4">Destinations</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-luxury-gold">Europe</a></li>
+                    <li><a href="#" class="hover:text-luxury-gold">Asia</a></li>
+                    <li><a href="#" class="hover:text-luxury-gold">Africa</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4">Newsletter</h4>
+                <form class="flex gap-2">
+                    <input type="email" placeholder="Email" class="px-4 py-2 rounded-full text-black w-full">
+                    <button type="button" class="bg-luxury-gold text-luxury-navy px-6 rounded-full">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-12 text-sm text-gray-400">
+            © 2025 LavishEscapes. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+
+</html>
