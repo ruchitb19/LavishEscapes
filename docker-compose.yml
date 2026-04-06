@@ -2,17 +2,19 @@ version: '3.8'
 
 services:
   backend:
+    image: ruchitbhosle19/lavishescapes-backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: lavishescapes-backend
     ports:
-      - "5500:5500"
+      - "5000:5000"
     env_file:
       - ./backend/.env
     restart: unless-stopped
 
   frontend:
+    image: ruchitbhosle19/lavishescapes-frontend:latest
     build:
       context: ./frontend
       dockerfile: Dockerfile

@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const BASE_URL = "https://flexxptxqf.execute-api.ap-south-1.amazonaws.com/prod";
+    // The BASE_URL is no longer used since we hit our own backend
+    // const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    // const BASE_URL = "https://flexxptxqf.execute-api.ap-south-1.amazonaws.com/prod";
 
     async function postData(url, data) {
         const response = await fetch(url, {
@@ -39,14 +41,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            const inquiryData = {
+                destination,
+                people,
+                checkin,
+                checkout,
+                inquiryDate: new Date().toISOString(),
+            };
+
+            // Log data to browser console as requested
+            console.log("Tour Search Data:", inquiryData);
+
             try {
-                await postData(`${BASE_URL}/escapes-inquiry`, {
-                    destination,
-                    people,
-                    checkin,
-                    checkout,
-                    inquiryDate: new Date().toISOString(),
-                });
+                let baseUrl = '';
+                // If running locally via Live Server or file protocol, explicitly specify the backend url
+                if (window.location.port === '5500' || window.location.protocol === 'file:') {
+                    baseUrl = 'http://localhost:5000';
+                }
+
+                await postData(`${baseUrl}/escapes-inquiry`, inquiryData);
 
                 alert("Inquiry submitted successfully!");
                 tourForm.reset();
@@ -75,8 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 // Assuming your backend runs on the same domain or uses a relative path.
-                // If it's on a different port (like 5500), you'd need the full URL here, e.g., 'http://localhost:5500/send-email'
-                await postData('/send-email', {
+                let baseUrl = '';
+                // If running locally via Live Server or file protocol, explicitly specify the backend url
+                if (window.location.port === '5500' || window.location.protocol === 'file:') {
+                    baseUrl = 'http://localhost:5000';
+                }
+
+                await postData(`${baseUrl}/send-email`, {
                     name,
                     email,
                     message,
