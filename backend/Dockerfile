@@ -1,4 +1,5 @@
-FROM node:18-alpine
+#Stage 1
+FROM node:18-alpine AS builder
 
 # Create app directory
 WORKDIR /app
@@ -8,10 +9,17 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm install --omit=dev
 
-# Bundle app source files (server.js, frontend folder)
-COPY . .
+#Stage 2
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+COPY --from=builder /app /app
+RUN npm prune --production
+
+# Bundle backend source files
+COPY . /app
 
 # Expose the API port
 EXPOSE 5500
