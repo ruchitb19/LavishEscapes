@@ -17,6 +17,7 @@ pipeline{
                 rm -f backend/.env && cp $ENV_FILE backend/.env
                 sed -i 's/\r//' backend/.env
                 '''
+                echo " ENV file setup Successful"
                 }
             }
         }
@@ -24,17 +25,20 @@ pipeline{
             steps{
                 echo "Building Docker images"
                 sh "docker compose build"
+                echo "Docker build Successful"
             }
         }
         stage('Docker Run'){
             steps{
                 echo "Starting containers"
                 sh "docker compose up -d"
+                echo "Containers are running"
             }
         }
         stage('Docker login'){
             steps{
                 dockerlogin("docker-credentials")
+                echo "Docker login successful"
             }
         }
         stage('Docker push'){
@@ -44,6 +48,7 @@ pipeline{
             docker push ruchitbhosle19/lavishescapes-backend:latest
             docker push ruchitbhosle19/lavishescapes-frontend:latest
             '''
+            echo "Docker Images pushed successfully"
            }
         }
 
