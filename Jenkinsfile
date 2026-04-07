@@ -13,7 +13,9 @@ pipeline{
             steps{
                 echo "Setting Up env file."
                 withCredentials([file(credentialsId:"lavishescapes-env", variable:"ENV_FILE")]){
-                sh 'em -f backend/.env && cp $ENV_FILE backend/.env'
+                sh '''
+                rm -f backend/.env && cp $ENV_FILE backend/.env
+                '''
                 }
             }
         }
