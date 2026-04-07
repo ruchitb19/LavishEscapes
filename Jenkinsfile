@@ -9,6 +9,14 @@ pipeline{
                 echo " Cloning Successful"
             }
         }
+        stage('Setup Env'){
+            steps{
+                echo "Setting Up env file."
+                withCredentials([file(credentialsId:"lavishescapes-env", variable:"ENV_FILE")]){
+                sh "cp $ENV_FILE .env"
+                }
+            }
+        }
         stage('Docker Build'){
             steps{
                 echo "Building Docker images"
