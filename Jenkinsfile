@@ -5,7 +5,7 @@ pipeline{
         stage('Checkout'){
             steps{
                 echo "Cloning repo from GitHub"
-                git url: 'https://github.com/ruchitb19/LavishEscapes.git', branch: 'main'
+                git url: 'https://github.com/ruchitb19/LavishEscapes.git', branch: 'jenkins-files'
                 echo " Cloning Successful"
             }
         }
