@@ -15,7 +15,7 @@ pipeline{
                 withCredentials([file(credentialsId:"lavishescapes-env", variable:"ENV_FILE")]){
                 sh '''
                 rm -f backend/.env && cp $ENV_FILE backend/.env
-                sed -i 's/\r// backend/.env'
+                sed -i 's/\r//' backend/.env
                 '''
                 }
             }
