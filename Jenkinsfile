@@ -5,7 +5,7 @@ pipeline{
         stage('Checkout'){
             steps{
                 echo "Cloning repo from GitHub"
-                git url: 'https://github.com/ruchitb19/LavishEscapes.git', branch: 'main'
+                git url: 'https://github.com/ruchitb19/LavishEscapes.git', branch: 'jenkins-files'
                 echo " Cloning Successful"
             }
         }
@@ -13,29 +13,32 @@ pipeline{
             steps{
                 echo "Setting Up env file."
                 withCredentials([file(credentialsId:"lavishescapes-env", variable:"ENV_FILE")]){
-                sh 'em -f backend/.env && cp $ENV_FILE backend/.env'
-                }
+                sh '''
+                rm -f backend/.env && cp $ENV_FILE backend/.env
+                sed -i 's/\r//' backend/.env
+                '''
                 echo " ENV file setup Successful"
+                }
             }
         }
         stage('Docker Build'){
             steps{
                 echo "Building Docker images"
                 sh "docker compose build"
-                echo " Docker Build Successful"
+                echo "Docker build Successful"
             }
         }
         stage('Docker Run'){
             steps{
                 echo "Starting containers"
                 sh "docker compose up -d"
-                echo " Docker Containers Running"
+                echo "Containers are running"
             }
         }
         stage('Docker login'){
             steps{
                 dockerLogin("docker-credentials")
-                echo " Docker Login Successful"
+                echo "Docker login successful"
             }
         }
         stage('Docker push'){
@@ -45,7 +48,7 @@ pipeline{
             docker push ruchitbhosle19/lavishescapes-backend:latest
             docker push ruchitbhosle19/lavishescapes-frontend:latest
             '''
-                echo " Docker Push Successful"
+            echo "Docker Images pushed successfully"
            }
         }
 
