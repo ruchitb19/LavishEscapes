@@ -1,4 +1,4 @@
-@Library('Jenkins-Shared-Library') _
+@Library('jenkins-shared-library') _
 pipeline{
     agent {label "local"}
     stages{
@@ -37,7 +37,7 @@ pipeline{
         }
         stage('Docker login'){
             steps{
-                dockerlogin("docker-credentials")
+                dockerLogin("docker-credentials")
                 echo "Docker login successful"
             }
         }
