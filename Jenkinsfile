@@ -1,6 +1,11 @@
 @Library('jenkins-shared-library') _
 pipeline{
     agent {label "local"}
+    
+    triggers {
+        githubPush()
+    }
+    
     stages{
         stage('Checkout'){
             steps{
@@ -28,13 +33,6 @@ pipeline{
                 echo "Docker build Successful"
             }
         }
-        stage('Docker Run'){
-            steps{
-                echo "Starting containers"
-                sh "docker compose up -d"
-                echo "Containers are running"
-            }
-        }
         stage('Docker login'){
             steps{
                 dockerLogin("docker-credentials")
@@ -51,6 +49,22 @@ pipeline{
             echo "Docker Images pushed successfully"
            }
         }
-
+        stage('Docker Run'){
+            steps{
+                echo "Starting containers"
+                sh "docker compose up -d"
+                echo "Containers are running"
+            }
+        }
+        stage('Health Check') {
+            steps {
+                sh 'curl -f http://localhost:3000 || exit 1'
+            }
+        }
+        stage('Cleanup') {
+            steps {
+                sh 'docker system prune -f'
+            }
+        }
     }
 }
