@@ -34,7 +34,7 @@ pipeline{
         }
         stage('Docker login'){
             steps{
-                dockerlogin("docker-credentials")
+                dockerLogin("docker-credentials")
                 echo " Docker Login Successful"
             }
         }
