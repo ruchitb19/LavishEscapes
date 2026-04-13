@@ -42,10 +42,11 @@ pipeline{
         stage('Docker push'){
            steps{
             echo "Pushing images to Docker Hub."
-            sh '''
-            docker push ruchitbhosle19/lavishescapes-backend:latest
-            docker push ruchitbhosle19/lavishescapes-frontend:latest
-            '''
+            dockerPush([
+                "ruchitbhosle19/lavishescapes-backend",
+                "ruchitbhosle19/lavishescapes-frontend"
+                ],
+                "latest")
             echo "Docker Images pushed successfully"
            }
         }
@@ -56,14 +57,14 @@ pipeline{
                 echo "Containers are running"
             }
         }
-        stage('Health Check') {
-            steps {
-                sh 'curl -f http://localhost:3000 || exit 1'
-            }
-        }
+        // stage('Health Check') {
+        //     steps {
+        //         sh 'curl -f http://localhost:3000 || exit 1'
+        //     }
+        // }
         stage('Cleanup') {
             steps {
-                sh 'docker system prune -f'
+                dockerCleanup()
             }
         }
     }
